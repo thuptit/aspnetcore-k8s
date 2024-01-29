@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webapp-mvc
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: mvc
+  template:
+    metadata:
+      labels:
+        app: mvc
+    spec:
+      containers:
+        - name: webapp
+          image: thudevdockerv1/webapp:latest
+          ports:
+            - containerPort: 5000
+      imagePullSecrets:
+      - name: myregistrykey1
