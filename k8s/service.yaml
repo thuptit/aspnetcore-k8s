@@ -6,7 +6,6 @@ spec:
   selector:
     app: mvc
   ports:
-    - protocol: TCP
-      port: 8000
-      targetPort: 5000
-  type: NodePort
+  - protocol: TCP
+    port: 8000
+    targetPort: 5000

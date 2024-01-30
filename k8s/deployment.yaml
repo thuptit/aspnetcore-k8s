@@ -13,9 +13,9 @@ spec:
         app: mvc
     spec:
       containers:
-        - name: webapp
-          image: thudevdockerv1/webapp:latest
-          ports:
-            - containerPort: 5000
+      - name: webapp
+        image: thudevdockerv1/webapp:latest
+        ports:
+        - containerPort: 5000
       imagePullSecrets:
       - name: myregistrykey1
