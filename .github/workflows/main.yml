@@ -1,0 +1,31 @@
+name: Build microservice
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+  pull_request:
+    branches: [master, develop]
+    paths:
+      - "**.cs"
+      - "**.csproj"
+
+env:
+  DOTNET_VERSION: "8.0"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    environment: develop
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set output
+        id: vars
+        run: echo "tag=${GITHUB_REF#refs/*/}" >> $GITHUB_OUTPUT
+
+      - name: Build Docker Image FE
+        run: |
+          chmod +rx ./scripts/build.sh
+        env:
+          HOST_NAME: ${{secrets.HOST_NAME}}
+        shell: bash
