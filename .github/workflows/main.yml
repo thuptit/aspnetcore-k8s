@@ -30,4 +30,5 @@ jobs:
           chmod +rx ./scripts/build.sh && ./scripts/build.sh
         env:
           HOST_NAME: ${{secrets.HOST_NAME}}
+          RELEASE_VERSION: ${{ steps.vars.outputs.tag }}
         shell: bash
